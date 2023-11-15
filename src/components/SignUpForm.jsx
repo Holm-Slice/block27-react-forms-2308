@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function SignUpForm() {
+export default function SignUpForm({ setToken }) {
   const [username, setUsername] = useState(""); // since this is a function we call it w/ () and pass it an empty string
   const [password, setPassword] = useState(""); // this is another piece of state that will create an empty string
   const [error, setError] = useState(null);
@@ -23,6 +23,10 @@ export default function SignUpForm() {
 
       const info = await rsp.json();
       console.log(info);
+      setToken(info.token);
+
+      setUsername("");
+      setPassword("");
     } catch (err) {
       setError(err.message);
     }
