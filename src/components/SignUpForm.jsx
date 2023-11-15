@@ -43,6 +43,7 @@ export default function SignUpForm({ setToken }) {
           {" "}
           Username:{" "}
           <input
+            minLength="8"
             value={username}
             onChange={(event) => {
               console.log(event.target.value);
@@ -55,6 +56,7 @@ export default function SignUpForm({ setToken }) {
         <label>
           Password:{" "}
           <input
+            minLength="8"
             value={password}
             onChange={(e) => {
               console.log(e.target.value);

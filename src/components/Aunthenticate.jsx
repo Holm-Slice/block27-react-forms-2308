@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Aunthentication({ token }) {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [username, setUsername] = useState(null);
 
   async function handleClick() {
     try {
@@ -20,6 +21,7 @@ export default function Aunthentication({ token }) {
       const info = await rsp.json();
       console.log(info);
       setSuccessMessage(info.message);
+      setUsername(info.data.username);
     } catch (err) {
       setError(err.message);
     }
@@ -31,6 +33,7 @@ export default function Aunthentication({ token }) {
       {error && <p>{error}</p>} {/* use error variable here */}
       <button onClick={handleClick}>Authenticate Token</button>
       {successMessage && <p>{successMessage}</p>}
+      {username && <p>{username}</p>}
     </>
   );
 }
